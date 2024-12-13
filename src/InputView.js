@@ -11,6 +11,7 @@ const InputView = {
       );
       isValidate = Validate.date(date);
     }
+    return date;
   },
 };
 
