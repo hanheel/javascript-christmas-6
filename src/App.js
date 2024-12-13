@@ -1,32 +1,13 @@
 import Event from "./Event.js";
 import InputView from "./InputView.js";
 import Menu from "./Menu.js";
-import Validate from "./Validate.js";
+import Price from "./Price.js";
 
 class App {
   async run() {
     const date = await InputView.readDate();
-    const eventInfo = Event.checkDate(date);
-    this.menuValidate();
-  }
-
-  async menuValidate() {
-    while (true) {
-      const menu = await InputView.readMenu();
-      const formValidate = Validate.menuForm(menu);
-      if (!formValidate) continue;
-      const menuJson = Menu.setData(menu);
-
-      const existMenu = Validate.menuExist(menuJson);
-      const existCount = Validate.menuCount(menuJson);
-      const validateTotal = Validate.menuTotal(menuJson);
-      const notOnlyDrink = Validate.menuDrink(menuJson);
-
-      const condition =
-        existMenu && existCount && validateTotal && notOnlyDrink;
-
-      if (condition) break;
-    }
+    const menuJson = await Menu.menuValidate();
+    const total = Price.calculateTotal(menuJson);
   }
 }
 

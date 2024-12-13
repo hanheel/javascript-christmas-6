@@ -1,6 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
 import Validate from "./Validate.js";
-import Menu from "./Menu.js";
 
 const InputView = {
   async readDate() {

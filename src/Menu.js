@@ -1,3 +1,6 @@
+import InputView from "./InputView.js";
+import Validate from "./Validate.js";
+
 const Menu = {
   setData(input) {
     const menuJson = [];
@@ -12,15 +15,18 @@ const Menu = {
     return menuJson;
   },
   async menuValidate() {
+    let menuJson;
     while (true) {
       const menu = await InputView.readMenu();
       const formValidate = Validate.menuForm(menu);
       if (!formValidate) continue;
-      const menuJson = Menu.setData(menu);
-      this.validate(menuJson);
+      menuJson = Menu.setData(menu);
+      const condition = this.purchaseValidate(menuJson);
       if (condition) break;
     }
+    return menuJson;
   },
+  //menu json 형태가 만들어진 후, 구매에 대한 유효성 검사를 실시
   async purchaseValidate(menuJson) {
     const existMenu = Validate.menuExist(menuJson);
     const existCount = Validate.menuCount(menuJson);
