@@ -1,17 +1,18 @@
-const event = {
+const eventInfo = {
   christmas: false,
   normal: false,
 };
 
-const CheckEvent = {
-  date(date) {
+const Event = {
+  checkDate(date) {
     if (date <= 25) {
-      event.christmas = true;
+      eventInfo.christmas = true;
     }
     if (date <= 31) {
-      event.normal = true;
+      eventInfo.normal = true;
     }
+    return eventInfo;
   },
 };
 
-export default Discount;
+export default Event;
