@@ -8,6 +8,9 @@ class App {
     const date = await InputView.readDate();
     const menuJson = await Menu.menuValidate();
     const total = Price.calculateTotal(menuJson);
+    console.log(total);
+    const eventInfo = Event.setEventInfo(date, total);
+    console.log(eventInfo);
   }
 }
 

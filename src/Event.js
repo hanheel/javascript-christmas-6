@@ -8,6 +8,7 @@ const Event = {
   setEventInfo(date, total) {
     this.checkDate(date);
     this.checkAddEvent(total);
+    return eventInfo;
   },
   checkDate(date) {
     if (date <= 25) {
