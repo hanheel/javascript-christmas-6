@@ -6,7 +6,7 @@ const Menu = {
     menu.forEach((i) => {
       const menuItem = {};
       menuItem.name = i[0];
-      menuItem.count = i[1];
+      menuItem.count = Number(i[1]);
       menuJson.push(menuItem);
     });
     return menuJson;

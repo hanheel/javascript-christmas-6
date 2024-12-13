@@ -13,6 +13,10 @@ const Event = {
     }
     return eventInfo;
   },
+  checkPrice(price) {
+    if (price > 10000) {
+    }
+  },
 };
 
 export default Event;
