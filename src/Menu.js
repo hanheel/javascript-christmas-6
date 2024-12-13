@@ -27,7 +27,7 @@ const Menu = {
     return menuJson;
   },
   //menu json 형태가 만들어진 후, 구매에 대한 유효성 검사를 실시
-  async purchaseValidate(menuJson) {
+  purchaseValidate(menuJson) {
     const existMenu = Validate.menuExist(menuJson);
     const existCount = Validate.menuCount(menuJson);
     const validateTotal = Validate.menuTotal(menuJson);
