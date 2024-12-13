@@ -15,7 +15,9 @@ const Event = {
   },
   checkPrice(price) {
     if (price > 10000) {
+      return true;
     }
+    return false;
   },
 };
 

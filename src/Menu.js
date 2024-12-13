@@ -11,6 +11,24 @@ const Menu = {
     });
     return menuJson;
   },
+  async menuValidate() {
+    while (true) {
+      const menu = await InputView.readMenu();
+      const formValidate = Validate.menuForm(menu);
+      if (!formValidate) continue;
+      const menuJson = Menu.setData(menu);
+      this.validate(menuJson);
+      if (condition) break;
+    }
+  },
+  async purchaseValidate(menuJson) {
+    const existMenu = Validate.menuExist(menuJson);
+    const existCount = Validate.menuCount(menuJson);
+    const validateTotal = Validate.menuTotal(menuJson);
+    const notOnlyDrink = Validate.menuDrink(menuJson);
+    const condition = existMenu && existCount && validateTotal && notOnlyDrink;
+    return condition;
+  },
 };
 
 export default Menu;

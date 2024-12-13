@@ -19,7 +19,12 @@ class App {
 
       const existMenu = Validate.menuExist(menuJson);
       const existCount = Validate.menuCount(menuJson);
-      const condition = existMenu && existCount;
+      const validateTotal = Validate.menuTotal(menuJson);
+      const notOnlyDrink = Validate.menuDrink(menuJson);
+
+      const condition =
+        existMenu && existCount && validateTotal && notOnlyDrink;
+
       if (condition) break;
     }
   }

@@ -48,3 +48,5 @@ export const MenuAssets = [
     price: 25000,
   },
 ];
+
+export const drinks = ["제로콜라", "레드와인", "샴페인"];
