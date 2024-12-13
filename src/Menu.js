@@ -1,7 +1,6 @@
-const menuJson = [];
-
 const Menu = {
   setData(input) {
+    const menuJson = [];
     const data = input.split(",");
     const menu = data.map((i) => i.split("-"));
     menu.forEach((i) => {

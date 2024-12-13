@@ -27,6 +27,14 @@ const Validate = {
     }
     return true;
   },
+  menuCount(menuJson) {
+    const isValidateCount = menuJson.filter((i) => i.count <= 0) == 0;
+    if (!isValidateCount) {
+      Console.print("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      return false;
+    }
+    return true;
+  },
 };
 
 export default Validate;

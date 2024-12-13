@@ -7,19 +7,20 @@ class App {
   async run() {
     const date = await InputView.readDate();
     const eventInfo = Event.checkDate(date);
-    const menu = await InputView.readMenu();
-    const menuJson = Menu.setData(menu);
-    this.menuValidate(menuJson);
+    this.menuValidate();
   }
 
-  async menuValidate(menuJson) {
-    const existMenu = Validate.menuExist(menuJson);
-    const condition = existMenu;
+  async menuValidate() {
     while (true) {
-      await InputView.readMenu();
-      if (condition) {
-        break;
-      }
+      const menu = await InputView.readMenu();
+      const formValidate = Validate.menuForm(menu);
+      if (!formValidate) continue;
+      const menuJson = Menu.setData(menu);
+
+      const existMenu = Validate.menuExist(menuJson);
+      const existCount = Validate.menuCount(menuJson);
+      const condition = existMenu && existCount;
+      if (condition) break;
     }
   }
 }
